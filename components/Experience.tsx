@@ -7,10 +7,11 @@ const Experience: React.FC = () => {
     <section id="experience" className="py-20 bg-devops-light/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
+          {/* ✅ TRADUCTION ICI */}
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            <span className="text-devops-accent">#</span> Career Path
+            <span className="text-devops-accent">#</span> Mon Parcours
           </h2>
-          <p className="text-gray-400">My professional journey in the tech industry.</p>
+          <p className="text-gray-400">Mon évolution professionnelle dans l'univers de la Tech.</p>
         </div>
 
         <div className="relative border-l border-gray-700 ml-4 md:ml-0 md:pl-0 space-y-12">

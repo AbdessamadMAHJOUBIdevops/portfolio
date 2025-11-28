@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { X, Printer, Download, Mail, Phone, MapPin, Linkedin, Github } from 'lucide-react';
 import { PERSONAL_INFO, EXPERIENCES, EDUCATION, CERTIFICATIONS, SKILL_CATEGORIES } from '../constants';
@@ -25,7 +24,8 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
           className="bg-devops-accent hover:bg-sky-500 text-devops-dark font-bold py-2 px-4 rounded-full shadow-lg flex items-center gap-2 transition-all"
         >
           <Printer size={18} />
-          <span>Print / Save PDF</span>
+          {/* ✅ TRADUCTION ICI */}
+          <span>Imprimer / Sauvegarder PDF</span>
         </button>
         <button 
           onClick={onClose}
@@ -131,12 +131,12 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
                 <ul className="space-y-2">
                   {CERTIFICATIONS.map((cert, idx) => (
                     <li key={idx} className="text-sm text-gray-700 flex items-start">
-                       <span className="mr-2">•</span>
-                       <span>
-                         <span className="font-semibold">{cert.name}</span>
-                         {cert.date && <span className="text-gray-500 text-xs ml-1">({cert.date})</span>}
-                         {cert.status === 'In Progress' && <span className="text-xs bg-yellow-100 text-yellow-800 px-1 rounded ml-2">En cours</span>}
-                       </span>
+                        <span className="mr-2">•</span>
+                        <span>
+                          <span className="font-semibold">{cert.name}</span>
+                          {cert.date && <span className="text-gray-500 text-xs ml-1">({cert.date})</span>}
+                          {cert.status === 'In Progress' && <span className="text-xs bg-yellow-100 text-yellow-800 px-1 rounded ml-2">En cours</span>}
+                        </span>
                     </li>
                   ))}
                 </ul>

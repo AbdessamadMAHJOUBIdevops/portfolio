@@ -1,7 +1,7 @@
 import React from 'react';
 import { Github, Linkedin, Mail } from 'lucide-react';
 import { PERSONAL_INFO } from '../constants';
-// 👇 IMPORT DE L'IMAGE (Vérifie bien que le nom est profil.jpg dans le dossier assets)
+// 👇 IMPORT DE L'IMAGE
 import profilePic from '../assets/profil.jpg';
 
 const Hero: React.FC = () => {
@@ -42,11 +42,11 @@ const Hero: React.FC = () => {
             {/* ✅ FIN BLOC PHOTO DE PROFIL */}
 
             <div className="inline-block px-3 py-1 bg-devops-light border border-devops-accent/30 rounded-full text-devops-accent font-mono text-sm mb-4">
-              <span className="animate-pulse mr-2">●</span>Available for Hire
+              <span className="animate-pulse mr-2">●</span>En recherche active de CDI
             </div>
             
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white">
-              Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-devops-accent to-purple-500">{PERSONAL_INFO.name}</span>
+              Bonjour, je suis <span className="text-transparent bg-clip-text bg-gradient-to-r from-devops-accent to-purple-500">{PERSONAL_INFO.name}</span>
             </h1>
             
             <h2 className="text-2xl md:text-3xl text-gray-400 font-mono">
@@ -54,10 +54,10 @@ const Hero: React.FC = () => {
             </h2>
             
             <p className="text-lg text-gray-400 max-w-2xl leading-relaxed">
-              Architecting resilient cloud infrastructures and automating delivery pipelines. 
-              Specialized in <span className="text-white font-semibold">Kubernetes</span>, 
-              <span className="text-white font-semibold"> DevOps</span> automation, and 
-              integrating <span className="text-white font-semibold">Generative AI</span> systems.
+              Je conçois des infrastructures cloud résilientes et j'automatise les pipelines de livraison. 
+              Spécialisé en <span className="text-white font-semibold">Kubernetes</span>, 
+              l'automatisation <span className="text-white font-semibold"> DevOps</span>, et 
+              l'intégration de systèmes d'<span className="text-white font-semibold">IA Générative</span>.
             </p>
 
             <div className="flex items-center justify-center md:justify-start space-x-4 pt-4">
@@ -90,13 +90,13 @@ const Hero: React.FC = () => {
                  onClick={() => scrollToSection('projects')}
                  className="px-8 py-3 bg-devops-accent text-devops-dark font-bold rounded-lg hover:bg-sky-500 transition-colors text-center shadow-lg shadow-sky-500/20"
                >
-                 View Projects
+                 Voir mes projets
                </button>
                <button 
                  onClick={() => scrollToSection('contact')}
                  className="px-8 py-3 border border-gray-600 text-white font-medium rounded-lg hover:border-devops-accent hover:text-devops-accent transition-colors text-center"
                >
-                 Contact Me
+                 Me contacter
                </button>
              </div>
           </div>
@@ -116,7 +116,7 @@ const Hero: React.FC = () => {
                   <span className="text-green-400">user@devops:~$</span> ./init_profile.sh
                 </p>
                 <p className="text-gray-300">
-                  <span className="text-blue-400">Loading modules...</span>
+                  <span className="text-blue-400">Chargement des modules...</span>
                 </p>
                 <div className="pl-4 border-l-2 border-gray-700 space-y-1">
                   <p className="text-gray-400">[OK] Cloud Infrastructure (AWS, Azure)</p>
@@ -125,7 +125,7 @@ const Hero: React.FC = () => {
                   <p className="text-gray-400">[OK] AI Integration (RAG, LLMs)</p>
                 </div>
                 <p className="text-gray-300 pt-2">
-                  <span className="text-purple-400">Status:</span> <span className="text-green-400">Ready for deployment</span>
+                  <span className="text-purple-400">Statut :</span> <span className="text-green-400">Prêt au déploiement</span>
                 </p>
                 <p className="text-gray-400 animate-pulse">
                   <span className="text-green-400">user@devops:~$</span> <span className="w-2 h-4 bg-gray-400 inline-block align-middle"></span>

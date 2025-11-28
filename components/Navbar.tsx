@@ -13,6 +13,7 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // ✅ Les liens sont bien en français ici
   const navLinks = [
     { name: 'Profil', href: '#about' },
     { name: 'Compétences', href: '#skills' },
@@ -56,8 +57,7 @@ const Navbar: React.FC = () => {
                   <span className="text-devops-accent mr-1">./</span>{link.name}
                 </a>
               ))}
-              
-              {/* ✅ MODIFICATION ICI (Version Desktop) */}
+              {/* Bouton Desktop */}
               <a 
                 href={`${import.meta.env.BASE_URL}cv.pdf`}
                 target="_blank"
@@ -67,7 +67,6 @@ const Navbar: React.FC = () => {
                 <FileText size={16} className="mr-2" />
                 CV.pdf
               </a>
-
             </div>
           </div>
           
@@ -96,8 +95,7 @@ const Navbar: React.FC = () => {
                  <span className="text-devops-accent mr-2">&gt;</span>{link.name}
               </a>
             ))}
-            
-             {/* ✅ MODIFICATION ICI (Version Mobile) */}
+             {/* Bouton Mobile */}
              <a 
                 href={`${import.meta.env.BASE_URL}cv.pdf`}
                 target="_blank"
@@ -108,7 +106,6 @@ const Navbar: React.FC = () => {
                 <FileText size={16} className="mr-2" />
                 Télécharger CV
               </a>
-
           </div>
         </div>
       )}

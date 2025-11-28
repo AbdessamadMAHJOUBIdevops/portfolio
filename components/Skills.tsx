@@ -17,10 +17,12 @@ const Skills: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            <span className="text-devops-accent">#</span> Technical Arsenal
+            {/* ✅ TRADUCTION DU TITRE */}
+            <span className="text-devops-accent">#</span> Arsenal Technique
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            A comprehensive set of tools and technologies I use to build, deploy, and scale applications.
+            {/* ✅ TRADUCTION DE LA DESCRIPTION */}
+            Une suite complète d'outils et de technologies que j'utilise pour construire, déployer et scaler des applications résilientes.
           </p>
         </div>
 
@@ -36,6 +38,7 @@ const Skills: React.FC = () => {
                   <div className="p-3 bg-devops-dark rounded-lg border border-gray-700 text-devops-accent group-hover:text-white group-hover:bg-devops-accent group-hover:border-devops-accent transition-colors">
                     <Icon size={24} />
                   </div>
+                  {/* Attention : Le titre ici (category.title) vient de constants.ts */}
                   <h3 className="ml-4 text-xl font-bold text-white">{category.title}</h3>
                 </div>
                 

@@ -8,9 +8,9 @@ const Projects: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            <span className="text-devops-accent">#</span> Featured Projects
+            <span className="text-devops-accent">#</span> Projets Phares
           </h2>
-          <p className="text-gray-400">Open source contributions and personal engineering projects.</p>
+          <p className="text-gray-400">Contributions Open Source et projets personnels d'ingénierie.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -30,7 +30,7 @@ const Projects: React.FC = () => {
                       target="_blank" 
                       rel="noreferrer"
                       className="p-2 bg-gray-900/80 rounded-full text-white hover:text-devops-accent backdrop-blur-sm transition-colors"
-                      title="View Code"
+                      title="Voir le code"
                     >
                       <Github size={18} />
                     </a>
@@ -41,7 +41,7 @@ const Projects: React.FC = () => {
                       target="_blank" 
                       rel="noreferrer"
                       className="p-2 bg-gray-900/80 rounded-full text-white hover:text-devops-accent backdrop-blur-sm transition-colors"
-                      title="Live Demo"
+                      title="Démo Live"
                     >
                       <ExternalLink size={18} />
                     </a>

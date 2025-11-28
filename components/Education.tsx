@@ -8,11 +8,16 @@ const Education: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           
-          {/* Education Column */}
+          {/* Colonne Formation (Education) */}
           <div>
              <div className="flex items-center mb-8">
                 <GraduationCap className="text-devops-accent mr-3" size={32} />
-                <h2 className="text-2xl font-bold text-white">Education</h2>
+                {/* Traduction du titre */}
+                
+
+[Image of Graduation Cap icon]
+
+                <h2 className="text-2xl font-bold text-white">Formation</h2>
              </div>
              
              <div className="space-y-8">
@@ -30,7 +35,7 @@ const Education: React.FC = () => {
              </div>
           </div>
 
-          {/* Certifications Column */}
+          {/* Colonne Certifications */}
           <div>
             <div className="flex items-center mb-8">
                 <Award className="text-devops-accent mr-3" size={32} />
@@ -46,11 +51,13 @@ const Education: React.FC = () => {
                       </div>
                       <div>
                         <h4 className="text-white font-medium">{cert.name}</h4>
-                        {cert.date && <p className="text-xs text-gray-500 font-mono mt-1">Obtained: {cert.date}</p>}
+                        {/* Traduction du label */}
+                        {cert.date && <p className="text-xs text-gray-500 font-mono mt-1">Obtenu : {cert.date}</p>}
                       </div>
                     </div>
+                    {/* Traduction du badge, mais on garde la logique de vérification */}
                     {cert.status === 'In Progress' && (
-                        <span className="text-xs font-mono text-yellow-500 bg-yellow-500/10 px-2 py-1 rounded">In Progress</span>
+                        <span className="text-xs font-mono text-yellow-500 bg-yellow-500/10 px-2 py-1 rounded">En cours</span>
                     )}
                   </div>
                 ))}
