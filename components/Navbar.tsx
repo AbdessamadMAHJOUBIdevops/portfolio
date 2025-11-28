@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Terminal, FileText } from 'lucide-react';
 
@@ -57,8 +56,10 @@ const Navbar: React.FC = () => {
                   <span className="text-devops-accent mr-1">./</span>{link.name}
                 </a>
               ))}
+              
+              {/* ✅ MODIFICATION ICI (Version Desktop) */}
               <a 
-                href="/cv.pdf"
+                href={`${import.meta.env.BASE_URL}cv.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center bg-devops-accent hover:bg-sky-500 text-devops-dark font-bold py-2 px-4 rounded transition-colors duration-200"
@@ -66,6 +67,7 @@ const Navbar: React.FC = () => {
                 <FileText size={16} className="mr-2" />
                 CV.pdf
               </a>
+
             </div>
           </div>
           
@@ -94,8 +96,10 @@ const Navbar: React.FC = () => {
                  <span className="text-devops-accent mr-2">&gt;</span>{link.name}
               </a>
             ))}
+            
+             {/* ✅ MODIFICATION ICI (Version Mobile) */}
              <a 
-                href="/cv.pdf"
+                href={`${import.meta.env.BASE_URL}cv.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
@@ -104,6 +108,7 @@ const Navbar: React.FC = () => {
                 <FileText size={16} className="mr-2" />
                 Télécharger CV
               </a>
+
           </div>
         </div>
       )}
