@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+// 👇 C'EST LA LIGNE QUI MANQUAIT : On importe le fichier qu'on vient de créer
+import './index.css'; 
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {

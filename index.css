@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Le correctif pour le défilement fluide */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
