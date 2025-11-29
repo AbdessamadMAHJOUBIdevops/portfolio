@@ -14,28 +14,31 @@ const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Profil', href: '#about' },
-    { name: 'Compétences', href: '#skills' },
-    { name: 'Expériences', href: '#experience' },
-    { name: 'Projets', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Profil', id: 'about' },
+    { name: 'Compétences', id: 'skills' },
+    { name: 'Expériences', id: 'experience' },
+    { name: 'Projets', id: 'projects' },
+    { name: 'Contact', id: 'contact' },
   ];
 
-  // ✅ CORRECTION : On force le scroll manuellement via JavaScript
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault(); // On empêche le navigateur de juste changer l'URL
-    const targetId = href.replace('#', '');
-    const element = document.getElementById(targetId);
-
+  // ✅ FONCTION "BULLDOZER" : On force le scroll manuellement
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    
     if (element) {
-      // 1. On ferme le menu mobile d'abord
+      // 1. On ferme le menu mobile
       setIsOpen(false);
-      
-      // 2. On scrolle vers l'élément de manière fluide
-      element.scrollIntoView({ behavior: 'smooth' });
 
-      // 3. (Optionnel) On met à jour l'URL sans recharger la page
-      window.history.pushState(null, '', href);
+      // 2. On calcule la position exacte (en tenant compte de la barre fixe)
+      const navbarHeight = 64; // Hauteur de la barre (h-16 = 64px)
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - navbarHeight;
+
+      // 3. On scrolle
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
     }
   };
 
@@ -55,15 +58,14 @@ const Navbar: React.FC = () => {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
               {navLinks.map((link) => (
-                <a
+                <button
                   key={link.name}
-                  href={link.href}
-                  // ✅ APPEL DE LA FONCTION JS
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-gray-300 hover:text-devops-accent hover:bg-white/5 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 code-font cursor-pointer"
+                  // ✅ On utilise un bouton au lieu d'un lien <a> pour éviter les conflits d'URL
+                  onClick={() => scrollToSection(link.id)}
+                  className="text-gray-300 hover:text-devops-accent hover:bg-white/5 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 code-font cursor-pointer bg-transparent border-none"
                 >
                   <span className="text-devops-accent mr-1">./</span>{link.name}
-                </a>
+                </button>
               ))}
               <a 
                 href={`${import.meta.env.BASE_URL}cv.pdf`}
@@ -93,15 +95,14 @@ const Navbar: React.FC = () => {
         <div className="md:hidden bg-devops-light border-b border-gray-700">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link) => (
-              <a
+              <button
                 key={link.name}
-                href={link.href}
-                // ✅ APPEL DE LA FONCTION JS ICI AUSSI
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
+                // ✅ Même chose pour le mobile
+                onClick={() => scrollToSection(link.id)}
+                className="text-gray-300 hover:text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium cursor-pointer bg-transparent border-none"
               >
                  <span className="text-devops-accent mr-2">&gt;</span>{link.name}
-              </a>
+              </button>
             ))}
              <a 
                 href={`${import.meta.env.BASE_URL}cv.pdf`}
