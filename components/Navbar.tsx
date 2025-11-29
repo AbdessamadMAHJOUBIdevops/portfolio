@@ -21,9 +21,22 @@ const Navbar: React.FC = () => {
     { name: 'Contact', href: '#contact' },
   ];
 
-  // ✅ SIMPLIFICATION : On ferme juste le menu mobile, on laisse le lien faire le reste
-  const handleNavClick = () => {
-    setIsOpen(false);
+  // ✅ CORRECTION : On force le scroll manuellement via JavaScript
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault(); // On empêche le navigateur de juste changer l'URL
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+
+    if (element) {
+      // 1. On ferme le menu mobile d'abord
+      setIsOpen(false);
+      
+      // 2. On scrolle vers l'élément de manière fluide
+      element.scrollIntoView({ behavior: 'smooth' });
+
+      // 3. (Optionnel) On met à jour l'URL sans recharger la page
+      window.history.pushState(null, '', href);
+    }
   };
 
   const handleLogoClick = () => {
@@ -45,7 +58,8 @@ const Navbar: React.FC = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  // ✅ PLUS DE PREVENT DEFAULT ICI
+                  // ✅ APPEL DE LA FONCTION JS
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className="text-gray-300 hover:text-devops-accent hover:bg-white/5 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 code-font cursor-pointer"
                 >
                   <span className="text-devops-accent mr-1">./</span>{link.name}
@@ -82,8 +96,8 @@ const Navbar: React.FC = () => {
               <a
                 key={link.name}
                 href={link.href}
-                // ✅ On ferme le menu quand on clique
-                onClick={handleNavClick}
+                // ✅ APPEL DE LA FONCTION JS ICI AUSSI
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
               >
                  <span className="text-devops-accent mr-2">&gt;</span>{link.name}
