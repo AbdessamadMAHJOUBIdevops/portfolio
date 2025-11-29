@@ -1,67 +1,79 @@
 import React from 'react';
-import { EDUCATION, CERTIFICATIONS } from '../constants';
-import { GraduationCap, Award, CheckCircle, Clock } from 'lucide-react';
+import { EXPERIENCES } from '../constants';
+import { Briefcase, Calendar, MapPin } from 'lucide-react';
 
-const Education: React.FC = () => {
+const Experience: React.FC = () => {
   return (
-    <section className="py-20 bg-devops-light/30 border-t border-gray-800">
+    <section id="experience" className="py-20 bg-devops-light/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          
-          {/* Colonne Formation (Education) */}
-          <div>
-             <div className="flex items-center mb-8">
-                <GraduationCap className="text-devops-accent mr-3" size={32} />
-                {/* ✅ C'EST ICI QUE J'AI CORRIGÉ LE PROBLÈME */}
-                <h2 className="text-2xl font-bold text-white">Formation</h2>
-             </div>
-             
-             <div className="space-y-8">
-                {EDUCATION.map((edu, index) => (
-                  <div key={index} className="relative pl-8 border-l border-gray-700">
-                    <div className="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-devops-secondary"></div>
-                    <h3 className="text-lg font-bold text-white">{edu.institution}</h3>
-                    <p className="text-devops-accent font-medium mb-1">{edu.degree}</p>
-                    <div className="flex justify-between text-sm text-gray-500 font-mono">
-                      <span>{edu.period}</span>
-                      <span>{edu.location}</span>
+        <div className="text-center mb-16">
+          {/* ✅ TRADUCTION ICI */}
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <span className="text-devops-accent">#</span> Mon Parcours
+          </h2>
+          <p className="text-gray-400">Mon évolution professionnelle dans l'univers de la Tech.</p>
+        </div>
+
+        <div className="relative border-l border-gray-700 ml-4 md:ml-0 md:pl-0 space-y-12">
+          {EXPERIENCES.map((exp, index) => (
+            <div key={index} className="relative group">
+              {/* Timeline Dot */}
+              <div className="absolute -left-[21px] top-0 bg-devops-dark border-4 border-devops-accent rounded-full h-10 w-10 flex items-center justify-center z-10 md:left-1/2 md:-ml-5">
+                 <Briefcase size={16} className="text-white" />
+              </div>
+
+              <div className={`md:flex items-start justify-between w-full ${index % 2 === 0 ? 'flex-row-reverse' : ''}`}>
+                
+                {/* Empty spacer for opposite side */}
+                <div className="hidden md:block w-5/12" />
+
+                {/* Content Card */}
+                <div className="ml-8 md:ml-0 w-full md:w-5/12">
+                  <div className="bg-devops-light border border-gray-700 rounded-xl p-6 shadow-lg hover:border-devops-accent/50 transition-colors relative">
+                    {/* Arrow for desktop */}
+                    <div className={`hidden md:block absolute top-3 w-4 h-4 bg-devops-light border-t border-l border-gray-700 rotate-45 ${index % 2 === 0 ? '-left-2.5 border-r-0 border-b-0' : '-right-2.5 rotate-[225deg]'}`}></div>
+
+                    <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-4">
+                      <h3 className="text-xl font-bold text-white">{exp.role}</h3>
+                      <span className="text-devops-accent font-mono text-sm mt-1 sm:mt-0">{exp.company}</span>
                     </div>
-                  </div>
-                ))}
-             </div>
-          </div>
 
-          {/* Colonne Certifications */}
-          <div>
-            <div className="flex items-center mb-8">
-                <Award className="text-devops-accent mr-3" size={32} />
-                <h2 className="text-2xl font-bold text-white">Certifications</h2>
-             </div>
-
-             <div className="grid gap-4">
-                {CERTIFICATIONS.map((cert, index) => (
-                  <div key={index} className="bg-devops-light border border-gray-700 p-4 rounded-lg flex items-center justify-between group hover:border-devops-accent transition-colors">
-                    <div className="flex items-center">
-                      <div className={`p-2 rounded-full mr-4 ${cert.status === 'Completed' ? 'bg-green-500/10 text-green-500' : 'bg-yellow-500/10 text-yellow-500'}`}>
-                        {cert.status === 'Completed' ? <CheckCircle size={20} /> : <Clock size={20} />}
+                    <div className="flex flex-col space-y-2 mb-4 text-sm text-gray-500 font-mono">
+                      <div className="flex items-center">
+                        <Calendar size={14} className="mr-2" />
+                        {exp.period}
                       </div>
-                      <div>
-                        <h4 className="text-white font-medium">{cert.name}</h4>
-                        {cert.date && <p className="text-xs text-gray-500 font-mono mt-1">Obtenu : {cert.date}</p>}
+                      <div className="flex items-center">
+                        <MapPin size={14} className="mr-2" />
+                        {exp.location}
                       </div>
                     </div>
-                    {cert.status === 'In Progress' && (
-                        <span className="text-xs font-mono text-yellow-500 bg-yellow-500/10 px-2 py-1 rounded">En cours</span>
-                    )}
-                  </div>
-                ))}
-             </div>
-          </div>
 
+                    <ul className="space-y-2 mb-6">
+                      {exp.description.map((item, idx) => (
+                        <li key={idx} className="text-gray-300 text-sm leading-relaxed flex items-start">
+                          <span className="text-devops-accent mr-2 mt-1.5 text-xs">▹</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="flex flex-wrap gap-2 pt-2 border-t border-gray-700/50">
+                      {exp.techStack.map((tech, idx) => (
+                        <span key={idx} className="text-xs font-mono text-devops-secondary bg-devops-secondary/10 px-2 py-1 rounded">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
   );
 };
 
-export default Education;
+export default Experience;
