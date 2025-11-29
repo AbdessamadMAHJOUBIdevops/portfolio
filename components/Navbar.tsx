@@ -13,7 +13,6 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // ✅ Les liens sont bien en français ici
   const navLinks = [
     { name: 'Profil', href: '#about' },
     { name: 'Compétences', href: '#skills' },
@@ -22,14 +21,9 @@ const Navbar: React.FC = () => {
     { name: 'Contact', href: '#contact' },
   ];
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const targetId = href.replace('#', '');
-    const element = document.getElementById(targetId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false);
-    }
+  // ✅ SIMPLIFICATION : On ferme juste le menu mobile, on laisse le lien faire le reste
+  const handleNavClick = () => {
+    setIsOpen(false);
   };
 
   const handleLogoClick = () => {
@@ -51,13 +45,12 @@ const Navbar: React.FC = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
+                  // ✅ PLUS DE PREVENT DEFAULT ICI
                   className="text-gray-300 hover:text-devops-accent hover:bg-white/5 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 code-font cursor-pointer"
                 >
                   <span className="text-devops-accent mr-1">./</span>{link.name}
                 </a>
               ))}
-              {/* Bouton Desktop */}
               <a 
                 href={`${import.meta.env.BASE_URL}cv.pdf`}
                 target="_blank"
@@ -89,13 +82,13 @@ const Navbar: React.FC = () => {
               <a
                 key={link.name}
                 href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
+                // ✅ On ferme le menu quand on clique
+                onClick={handleNavClick}
                 className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
               >
                  <span className="text-devops-accent mr-2">&gt;</span>{link.name}
               </a>
             ))}
-             {/* Bouton Mobile */}
              <a 
                 href={`${import.meta.env.BASE_URL}cv.pdf`}
                 target="_blank"
